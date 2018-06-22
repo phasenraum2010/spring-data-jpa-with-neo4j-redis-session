@@ -67,17 +67,19 @@
         <java.version>1.8</java.version>
         <neo4j.version>3.1.1</neo4j.version>
         <neo4j-ogm.version>3.1.0</neo4j-ogm.version>
-        <spring-boot.version>${parent.version}</spring-boot.version>
+        <spring-boot.version>${project.parent.version}</spring-boot.version>
         <!-- SCM -->
         <maven.scm.version>1.9.5</maven.scm.version>
         <!-- plugins -->
         <maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
+        <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <maven-surefire-report-plugin.version>2.22.0</maven-surefire-report-plugin.version>
         <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
         <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.10.0</maven-pmd-plugin.version>
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
+        <artifactory-maven-plugin.version>2.6.1</artifactory-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -221,6 +223,7 @@
                     <version>${findbugs-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-pmd-plugin</artifactId>
                     <version>${maven-pmd-plugin.version}</version>
                 </plugin>
@@ -374,53 +377,13 @@
                 <plugin>
                     <groupId>org.jfrog.buildinfo</groupId>
                     <artifactId>artifactory-maven-plugin</artifactId>
-                    <version>2.6.1</version>
-                    <executions>
-                        <execution>
-                            <id>build-info</id>
-                            <goals>
-                                <goal>publish</goal>
-                            </goals>
-                            <configuration>
-                                <artifactory>
-                                    <includeEnvVars>false</includeEnvVars>
-                                </artifactory>
-                                <publisher>
-                                    <contextUrl>{{artifactory.server}}</contextUrl>
-                                    <username>{{artifactory.username}}</username>
-                                    <password>{{artifactory.password}}</password>
-                                    <repoKey>{{artifactory.staging-repository}}</repoKey>
-                                    <snapshotRepoKey>{{artifactory.staging-repository}}</snapshotRepoKey>
-                                </publisher>
-                                <buildInfo>
-                                    <buildName>{{artifactory.build-name}}</buildName>
-                                    <buildNumber>{{artifactory.build-number}}</buildNumber>
-                                </buildInfo>
-                            </configuration>
-                        </execution>
-                    </executions>
+                    <version>${artifactory-maven-plugin.version}</version>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>${maven-surefire-report-plugin.version}</version>
-                </plugin>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jxr-plugin</artifactId>
                     <version>${maven-jxr-plugin.version}</version>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-pmd-plugin</artifactId>
-                    <version>${maven-pmd-plugin.version}</version>
-                </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-changes-plugin</artifactId>
-                <version>${maven-changes-plugin.version}</version>
-            </plugin>
             </plugins>
         </pluginManagement>
 
@@ -528,18 +491,39 @@
                     <generateReports>true</generateReports>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.jfrog.buildinfo</groupId>
                 <artifactId>artifactory-maven-plugin</artifactId>
                 <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <configuration>
+                            <artifactory>
+                                <includeEnvVars>false</includeEnvVars>
+                            </artifactory>
+                            <publisher>
+                                <contextUrl>{{artifactory.server}}</contextUrl>
+                                <username>{{artifactory.username}}</username>
+                                <password>{{artifactory.password}}</password>
+                                <repoKey>{{artifactory.staging-repository}}</repoKey>
+                                <snapshotRepoKey>{{artifactory.staging-repository}}</snapshotRepoKey>
+                            </publisher>
+                            <buildInfo>
+                                <buildName>{{artifactory.build-name}}</buildName>
+                                <buildNumber>{{artifactory.build-number}}</buildNumber>
+                            </buildInfo>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
-            <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>findbugs-maven-plugin</artifactId>
-            <version>${findbugs-maven-plugin.version}</version>
-            </plugin>
-
         </plugins>
     </build>
 
@@ -784,7 +768,7 @@
             </plugin>
         </plugins>
     </reporting>
-
+<!--
     <repositories>
         <repository>
             <id>spring-snapshots</id>
@@ -822,6 +806,6 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
+-->
 </project>
 

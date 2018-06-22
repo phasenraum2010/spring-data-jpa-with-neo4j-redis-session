@@ -32,4 +32,10 @@ function site(){
     ./mvnw -e -P$PROFILE -Dspring.profiles.active=$PROFILE -Dserver.port=$PORT clean install dependency:tree site
 }
 
+function site_run(){
+    PROFILE=$1
+    verify
+    ./mvnw -e -P$PROFILE -Dspring.profiles.active=$PROFILE -Dserver.port=$PORT clean install dependency:tree site site:run
+}
+
 
