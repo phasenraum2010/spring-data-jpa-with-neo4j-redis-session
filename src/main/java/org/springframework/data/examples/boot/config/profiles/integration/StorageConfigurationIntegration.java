@@ -1,4 +1,4 @@
-package org.springframework.data.examples.boot.config.profiles.production;
+package org.springframework.data.examples.boot.config.profiles.integration;
 
 import javax.persistence.EntityManagerFactory;
 
@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author Mark Angrish, Thomas Woehlke
  */
 @Configuration
-@Profile("production")
+@Profile("integration")
 @EnableNeo4jRepositories(
 	basePackages = "org.springframework.data.examples.boot.storage.neo4j.repository",
 	transactionManagerRef = "neo4jTransactionManager"
@@ -39,7 +39,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 )
 @EnableTransactionManagement
 @EnableConfigurationProperties(StorageProperties.class)
-public class StorageConfigurationProduction {
+public class StorageConfigurationIntegration {
 
     @Autowired
     private StorageProperties storageProperties;
@@ -114,5 +114,5 @@ public class StorageConfigurationProduction {
     @Autowired
     private ConfigurationLogger configurationLogger;
 
-	private static final Log LOGGER = LogFactory.getLog(StorageConfigurationProduction.class);
+	private static final Log LOGGER = LogFactory.getLog(StorageConfigurationIntegration.class);
 }

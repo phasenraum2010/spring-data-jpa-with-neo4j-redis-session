@@ -237,9 +237,9 @@
         </profile>
 
         <profile>
-            <id>production</id>
+            <id>integration</id>
             <properties>
-                <spring.profiles>production</spring.profiles>
+                <spring.profiles>integration</spring.profiles>
             </properties>
             <dependencies>
                 <dependency>
@@ -273,7 +273,7 @@
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
                             <additionalProperties>
-                                <spring.profiles>production</spring.profiles>
+                                <spring.profiles>integration</spring.profiles>
                             </additionalProperties>
                         </configuration>
                     </plugin>
@@ -282,11 +282,11 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <systemPropertyVariables>
-                                <!--
-                                <spring.profiles>production</spring.profiles>
-                                <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
-                                <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
-                                -->
+                                  <!--
+                                    <spring.profiles>integration</spring.profiles>
+                                    -->
+                              <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
+                              <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>

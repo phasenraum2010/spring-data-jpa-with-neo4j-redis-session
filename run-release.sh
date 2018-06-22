@@ -28,6 +28,7 @@ function usage_steps_by_hand(){
     echo "git push"
 }
 
+qa_before_release
 usage_steps_by_hand
 
 exit 0

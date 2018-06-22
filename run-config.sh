@@ -5,7 +5,7 @@ export JAVA_OPTIONS='-Xmx300m -Xss512k -Dfile.encoding=UTF-8'
 export MAVEN_OPTS="-Xmx512m"
 export SERVER_PORT=8080
 
-export PROFILES="development production"
+export PROFILES="development integration"
 
 function verify(){
     ./mvnw -e verify

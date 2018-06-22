@@ -2,6 +2,6 @@
 
 source run-config.sh
 
-run production
+run integration
 
 exit 0
