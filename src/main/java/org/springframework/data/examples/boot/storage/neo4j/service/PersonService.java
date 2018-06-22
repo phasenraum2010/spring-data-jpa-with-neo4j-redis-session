@@ -1,6 +1,6 @@
-package org.springframework.data.examples.boot.neo4j.service;
+package org.springframework.data.examples.boot.storage.neo4j.service;
 
-import org.springframework.data.examples.boot.neo4j.domain.Person;
+import org.springframework.data.examples.boot.storage.neo4j.domain.Person;
 
 import java.util.Optional;
 

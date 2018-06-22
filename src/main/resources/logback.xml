@@ -25,8 +25,8 @@
     <logger name="org.springframework.boot" level="INFO" />
 
     <!-- Application -->
-    <logger name="org.springframework.data.examples.boot.neo4j" level="DEBUG" />
-    <logger name="org.springframework.data.examples.boot.jpa" level="DEBUG" />
+    <logger name="org.springframework.data.examples.boot.storage.neo4j" level="DEBUG" />
+    <logger name="org.springframework.data.examples.boot.storage.jpa" level="DEBUG" />
     <logger name="org.springframework.data.examples.boot.config" level="DEBUG" />
 
     <!-- Everything Else -->

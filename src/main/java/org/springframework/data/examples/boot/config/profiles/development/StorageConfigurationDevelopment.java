@@ -1,4 +1,4 @@
-package org.springframework.data.examples.boot.config;
+package org.springframework.data.examples.boot.config.profiles.development;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.examples.boot.config.helper.ConfigurationLogger;
-import org.springframework.data.examples.boot.config.helper.MyApplicationProperties;
+import org.springframework.data.examples.boot.config.properties.StorageProperties;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.data.neo4j.transaction.Neo4jTransactionManager;
@@ -32,18 +32,18 @@ import java.io.File;
 @Configuration
 @Profile("development")
 @EnableNeo4jRepositories(
-	basePackages = "org.springframework.data.examples.boot.neo4j.repository",
+	basePackages = "org.springframework.data.examples.boot.storage.neo4j.repository",
 	transactionManagerRef = "neo4jTransactionManager"
 )
 @EnableJpaRepositories(
-	basePackages = "org.springframework.data.examples.boot.jpa.repository",
+	basePackages = "org.springframework.data.examples.boot.storage.jpa.repository",
 	transactionManagerRef = "jpaTransactionManager"
 )
 @EnableTransactionManagement
-@EnableConfigurationProperties(MyApplicationProperties.class)
-public class ConfigurationDevelopment {
+@EnableConfigurationProperties(StorageProperties.class)
+public class StorageConfigurationDevelopment {
 
-    private final String packages[] = { "org.springframework.data.examples.boot.neo4j.domain" };
+    private final String packages[] = { "org.springframework.data.examples.boot.storage.neo4j.domain" };
 
 	private final String graphDbFileName  = "target/var/graphDb";
 
@@ -51,11 +51,11 @@ public class ConfigurationDevelopment {
 	private ConfigurationLogger configurationLogger;
 
     @Autowired
-	private MyApplicationProperties myApplicationProperties;
+	private StorageProperties storageProperties;
 
     @Bean
     public Driver neo4jDriver() {
-        myApplicationProperties.log();
+        storageProperties.log();
         LOGGER.debug("   Neo4J Driver Configuration = Embedded : " + this.graphDbFileName + " ");
         LOGGER.debug("-------------------------------------------------------------");
         File db = new File( graphDbFileName );
@@ -95,5 +95,5 @@ public class ConfigurationDevelopment {
         return neo4jTransactionManager;
     }
 
-	private static final Log LOGGER = LogFactory.getLog(ConfigurationDevelopment.class);
+	private static final Log LOGGER = LogFactory.getLog(StorageConfigurationDevelopment.class);
 }

@@ -1,6 +1,4 @@
-package org.springframework.data.examples.boot.jpa.domain;
-
-import org.springframework.data.examples.boot.neo4j.domain.Person;
+package org.springframework.data.examples.boot.storage.jpa.domain;
 
 import javax.persistence.*;
 import java.util.Collections;

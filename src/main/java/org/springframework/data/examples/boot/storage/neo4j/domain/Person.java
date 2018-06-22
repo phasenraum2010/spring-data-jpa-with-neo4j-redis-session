@@ -1,4 +1,4 @@
-package org.springframework.data.examples.boot.neo4j.domain;
+package org.springframework.data.examples.boot.storage.neo4j.domain;
 
 import java.util.Collections;
 import java.util.HashSet;

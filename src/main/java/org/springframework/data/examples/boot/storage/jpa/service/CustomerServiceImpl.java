@@ -1,8 +1,8 @@
-package org.springframework.data.examples.boot.jpa.service;
+package org.springframework.data.examples.boot.storage.jpa.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.examples.boot.jpa.domain.Customer;
-import org.springframework.data.examples.boot.jpa.repository.CustomerRepository;
+import org.springframework.data.examples.boot.storage.jpa.domain.Customer;
+import org.springframework.data.examples.boot.storage.jpa.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

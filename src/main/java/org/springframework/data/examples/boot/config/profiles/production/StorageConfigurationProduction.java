@@ -1,4 +1,4 @@
-package org.springframework.data.examples.boot.config;
+package org.springframework.data.examples.boot.config.profiles.production;
 
 import javax.persistence.EntityManagerFactory;
 
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.examples.boot.config.helper.ConfigurationLogger;
-import org.springframework.data.examples.boot.config.helper.MyApplicationProperties;
+import org.springframework.data.examples.boot.config.properties.StorageProperties;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.data.neo4j.transaction.Neo4jTransactionManager;
@@ -30,23 +30,23 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @Profile("production")
 @EnableNeo4jRepositories(
-	basePackages = "org.springframework.data.examples.boot.neo4j.repository",
+	basePackages = "org.springframework.data.examples.boot.storage.neo4j.repository",
 	transactionManagerRef = "neo4jTransactionManager"
 )
 @EnableJpaRepositories(
-	basePackages = "org.springframework.data.examples.boot.jpa.repository",
+	basePackages = "org.springframework.data.examples.boot.storage.jpa.repository",
 	transactionManagerRef = "jpaTransactionManager"
 )
 @EnableTransactionManagement
-@EnableConfigurationProperties(MyApplicationProperties.class)
-public class ConfigurationProduction {
+@EnableConfigurationProperties(StorageProperties.class)
+public class StorageConfigurationProduction {
 
     @Autowired
-    private MyApplicationProperties myApplicationProperties;
+    private StorageProperties storageProperties;
 
 
     private final String packages[] = {
-        "org.springframework.data.examples.boot.neo4j.domain"
+        "org.springframework.data.examples.boot.storage.neo4j.domain"
     };
 
     @NonNull
@@ -67,7 +67,7 @@ public class ConfigurationProduction {
 
     @Bean
     public org.neo4j.ogm.config.Configuration configuration() {
-        myApplicationProperties.log();
+        storageProperties.log();
         LOGGER.debug("-------------------------------------------------------------");
         LOGGER.debug("   spring.data.neo4j.username = " + this.username + "        ");
         LOGGER.debug("   spring.data.neo4j.password = " + this.password + "        ");
@@ -76,11 +76,11 @@ public class ConfigurationProduction {
         LOGGER.debug("-------------------------------------------------------------");
         org.neo4j.ogm.config.Configuration configuration =
             new org.neo4j.ogm.config.Configuration.Builder()
-                .uri(this.myApplicationProperties.getNeo4jUri())
+                .uri(this.storageProperties.getNeo4jUri())
                 .credentials(this.username,this.password)
                 .encryptionLevel(this.encryptionLevel)
-                .generatedIndexesOutputDir(myApplicationProperties.getGeneratedIndexesOutputDir())
-                .generatedIndexesOutputFilename(myApplicationProperties.getGeneratedIndexesOutputFilename())
+                .generatedIndexesOutputDir(storageProperties.getGeneratedIndexesOutputDir())
+                .generatedIndexesOutputFilename(storageProperties.getGeneratedIndexesOutputFilename())
                 .verifyConnection(this.verifyConnection)
                 .build();
         configurationLogger.configurationLogger(configuration);
@@ -114,5 +114,5 @@ public class ConfigurationProduction {
     @Autowired
     private ConfigurationLogger configurationLogger;
 
-	private static final Log LOGGER = LogFactory.getLog(ConfigurationProduction.class);
+	private static final Log LOGGER = LogFactory.getLog(StorageConfigurationProduction.class);
 }

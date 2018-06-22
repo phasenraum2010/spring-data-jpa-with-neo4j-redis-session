@@ -1,6 +1,6 @@
-package org.springframework.data.examples.boot.jpa.service;
+package org.springframework.data.examples.boot.storage.jpa.service;
 
-import org.springframework.data.examples.boot.jpa.domain.Customer;
+import org.springframework.data.examples.boot.storage.jpa.domain.Customer;
 
 import java.util.List;
 import java.util.Optional;

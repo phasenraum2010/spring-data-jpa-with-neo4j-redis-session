@@ -1,10 +1,10 @@
-package org.springframework.data.examples.boot.config.helper;
+package org.springframework.data.examples.boot.config.properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.data.examples.boot.config.ConfigurationDevelopment;
+import org.springframework.data.examples.boot.config.profiles.development.StorageConfigurationDevelopment;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -17,7 +17,7 @@ import org.springframework.validation.annotation.Validated;
 @Component
 @Validated
 @ConfigurationProperties
-public class MyApplicationProperties {
+public class StorageProperties {
 
 
     @NonNull
@@ -133,5 +133,5 @@ public class MyApplicationProperties {
         LOGGER.debug("-------------------------------------------------------------");
     }
 
-    private static final Log LOGGER = LogFactory.getLog(ConfigurationDevelopment.class);
+    private static final Log LOGGER = LogFactory.getLog(StorageConfigurationDevelopment.class);
 }
