@@ -34,7 +34,7 @@ public class Application implements ApplicationListener<ApplicationReadyEvent> {
         LOGGER.info(" ===== Application Ready   ====== ");
         LOGGER.info(" ================================ ");
         LOGGER.info(" ");
-        processService.runDatabaseExample();;
+        processService.runDatabaseExample();
         SpringApplication.exit(event.getApplicationContext());
     }
 }

@@ -17,9 +17,9 @@ spring:
     repositories:
       enabled: true
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/evaluator?user=evaluator&password=evaluatorpwd&schema=public&catalog=information_schema'
-    username: evaluator
-    password: evaluatorpwd
+    url: 'jdbc:postgresql://localhost:5432/jpa_neo4j_int?user=jpa_neo4j&password=jpa_neo4jpwd&schema=public&catalog=information_schema'
+    username: jpa_neo4j
+    password: jpa_neo4jpwd
     driver-class-name: org.postgresql.Driver
     platform: postgresql
   dao:

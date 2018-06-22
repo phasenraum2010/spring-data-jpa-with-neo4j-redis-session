@@ -38,7 +38,7 @@ public class ConfigurationLoggerImpl implements ConfigurationLogger {
                     LOGGER.debug("spring.data.neo4j.URIS ["+ ++i +"] = " +uri);
                 }
             } catch (NullPointerException npe) {
-                LOGGER.error("spring.data.neo4j.URIS = " + npe.getMessage());
+                LOGGER.debug("spring.data.neo4j.URIS = " + npe.getMessage());
             }
             try {
                 LOGGER.debug("spring.data.neo4j.trust.strategy = " + configuration.getTrustStrategy());
@@ -83,15 +83,15 @@ public class ConfigurationLoggerImpl implements ConfigurationLogger {
                 if (configuration.getCredentials() != null) {
                     if (configuration.getCredentials().credentials() != null) {
                         try {
-                            LOGGER.error("spring.data.neo4j.username = " + configuration.getCredentials().credentials().toString());
+                            LOGGER.debug("spring.data.neo4j.username = " + configuration.getCredentials().credentials().toString());
                         } catch (NullPointerException npe) {
-                            LOGGER.error("spring.data.neo4j.username = " + npe.getMessage());
+                            LOGGER.warn("spring.data.neo4j.username = " + npe.getMessage());
                         }
                     } else {
-                        LOGGER.error("spring.data.neo4j.username =       configuration.getCredentials().credentials() == null");
+                        LOGGER.warn("spring.data.neo4j.username =       configuration.getCredentials().credentials() == null");
                     }
                 } else {
-                    LOGGER.error("spring.data.neo4j.username =       configuration.getCredentials() == null");
+                    LOGGER.warn("spring.data.neo4j.username =       configuration.getCredentials() == null");
                 }
             } catch (NullPointerException npe) {
                 LOGGER.error("spring.data.neo4j.username = " + npe.getMessage());

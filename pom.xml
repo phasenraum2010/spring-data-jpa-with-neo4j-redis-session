@@ -123,7 +123,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <spring.profiles>default</spring.profiles>
+                <spring.profiles.active>default</spring.profiles.active>
             </properties>
             <dependencies>
                 <dependency>
@@ -224,9 +224,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <systemPropertyVariables>
-                                <!--
-                                <spring.profiles>development</spring.profiles>
-                                -->
+                                <spring.profiles.active>development</spring.profiles.active>
                                 <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
                                 <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
                             </systemPropertyVariables>
@@ -239,7 +237,7 @@
         <profile>
             <id>integration</id>
             <properties>
-                <spring.profiles>integration</spring.profiles>
+                <spring.profiles.active>integration</spring.profiles.active>
             </properties>
             <dependencies>
                 <dependency>
@@ -273,7 +271,7 @@
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
                             <additionalProperties>
-                                <spring.profiles>integration</spring.profiles>
+                                <spring.profiles.active>integration</spring.profiles.active>
                             </additionalProperties>
                         </configuration>
                     </plugin>
@@ -282,11 +280,9 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <systemPropertyVariables>
-                                  <!--
-                                    <spring.profiles>integration</spring.profiles>
-                                    -->
-                              <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
-                              <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
+                                <spring.profiles.active>integration</spring.profiles.active>
+                                <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
+                                <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
