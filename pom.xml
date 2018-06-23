@@ -80,6 +80,9 @@
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <artifactory-maven-plugin.version>2.6.1</artifactory-maven-plugin.version>
+        <taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
+        <maven.changelog.plugin.version>2.3</maven.changelog.plugin.version>
+        <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
     </properties>
 
     <dependencyManagement>
