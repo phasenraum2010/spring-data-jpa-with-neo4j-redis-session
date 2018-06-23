@@ -14,7 +14,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.woehlke.neo4j.example.config.helper.ConfigurationLogger;
+import org.woehlke.neo4j.example.config.helper.Neo4jConfigurationLogger;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.data.neo4j.transaction.Neo4jTransactionManager;
@@ -51,7 +51,7 @@ public class StorageConfigurationEmbedded {
 	private final String graphDbFileName  = "target/var/graphDb";
 
 	@Autowired
-	private ConfigurationLogger configurationLogger;
+	private Neo4jConfigurationLogger neo4jConfigurationLogger;
 
     @Autowired
     private AllProperties allProperties;
@@ -77,7 +77,7 @@ public class StorageConfigurationEmbedded {
         } else {
             org.neo4j.ogm.config.Configuration configuration = neo4jDriver.getConfiguration();
             if(configuration == null){
-                List<String> logInfos = configurationLogger.configurationLogger(configuration);
+                List<String> logInfos = neo4jConfigurationLogger.configurationLogger(configuration);
                 for (String logInfo:logInfos) {
                     LOGGER.debug(logInfo);
                 }

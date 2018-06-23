@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author Thomas Woehlke
  */
-public interface ConfigurationLogger {
+public interface Neo4jConfigurationLogger {
 
     List<String> configurationLogger(org.neo4j.ogm.config.Configuration configuration);
 }

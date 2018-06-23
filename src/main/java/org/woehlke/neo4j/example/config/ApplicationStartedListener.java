@@ -1,7 +1,5 @@
 package org.woehlke.neo4j.example.config;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationListener;
@@ -12,17 +10,17 @@ import org.woehlke.neo4j.example.config.helper.LoggingComponentImpl;
  * Created by tw on 23.06.18.
  */
 @Component
-public class ApplicationStartListener extends LoggingComponentImpl implements ApplicationListener<ApplicationStartedEvent> {
+public class ApplicationStartedListener extends LoggingComponentImpl implements ApplicationListener<ApplicationStartedEvent> {
 
     @Override
     protected String[] getLogInfos() {
         return new String[]{
-                " ",
-                "================================ ",
-                "===== Application Started ====== ",
-                "================================ ",
-                "   " + allProperties.getSpringApplicationName(),
-                "-------------------------------------------------------------"
+            " ",
+            "================================ ",
+            "===== Application Started ====== ",
+            "================================ ",
+            "   " + allProperties.getSpringApplicationName(),
+            "-------------------------------------------------------------"
         };
     }
 
@@ -34,7 +32,7 @@ public class ApplicationStartListener extends LoggingComponentImpl implements Ap
     }
 
     @Autowired
-    public ApplicationStartListener(AllProperties allProperties, StorageProperties storageProperties) {
+    public ApplicationStartedListener(AllProperties allProperties, StorageProperties storageProperties) {
         this.allProperties = allProperties;
         this.storageProperties = storageProperties;
     }
@@ -42,8 +40,5 @@ public class ApplicationStartListener extends LoggingComponentImpl implements Ap
     private final AllProperties allProperties;
 
     private final StorageProperties storageProperties;
-
-    private static final Log LOGGER = LogFactory.getLog(ApplicationStartListener.class);
-
 
 }

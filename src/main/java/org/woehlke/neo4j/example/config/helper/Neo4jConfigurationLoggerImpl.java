@@ -11,7 +11,7 @@ import java.util.List;
  * @author Thomas Woehlke
  */
 @Component
-public class ConfigurationLoggerImpl implements ConfigurationLogger {
+public class Neo4jConfigurationLoggerImpl implements Neo4jConfigurationLogger {
 
     @Override
     public List<String> configurationLogger(Configuration configuration) {
