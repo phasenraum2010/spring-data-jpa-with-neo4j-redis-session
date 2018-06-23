@@ -169,6 +169,19 @@
             <optional>true</optional>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -544,6 +557,11 @@
                     <scope>compile</scope>
                 </dependency>
                 <dependency>
+                    <groupId>org.neo4j</groupId>
+                    <artifactId>neo4j-ogm-bolt-driver</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
                     <scope>compile</scope>
@@ -551,21 +569,6 @@
                 <dependency>
                     <groupId>org.neo4j</groupId>
                     <artifactId>neo4j</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-api</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-core</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-bolt-driver</artifactId>
                     <scope>compile</scope>
                 </dependency>
             </dependencies>
@@ -587,7 +590,7 @@
         </profile>
 
         <profile>
-            <id>development</id>
+            <id>developmentembedded</id>
             <properties>
                 <spring.profiles.active>development</spring.profiles.active>
             </properties>
@@ -597,27 +600,17 @@
                     <artifactId>neo4j-ogm-embedded-driver</artifactId>
                 </dependency>
                 <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
+                    <groupId>org.neo4j</groupId>
+                    <artifactId>neo4j-ogm-bolt-driver</artifactId>
+                    <scope>compile</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.neo4j</groupId>
                     <artifactId>neo4j</artifactId>
                 </dependency>
                 <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-api</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-core</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-bolt-driver</artifactId>
-                    <scope>compile</scope>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
                 </dependency>
             </dependencies>
             <build>
@@ -647,9 +640,9 @@
         </profile>
 
         <profile>
-            <id>integration</id>
+            <id>developmentlocalhost</id>
             <properties>
-                <spring.profiles.active>integration</spring.profiles.active>
+                <spring.profiles.active>developmentlocalhost</spring.profiles.active>
             </properties>
             <dependencies>
                 <dependency>
@@ -657,23 +650,20 @@
                     <artifactId>neo4j-ogm-bolt-driver</artifactId>
                 </dependency>
                 <dependency>
-                    <groupId>org.postgresql</groupId>
-                    <artifactId>postgresql</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-api</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-core</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
                     <groupId>org.neo4j</groupId>
                     <artifactId>neo4j-ogm-embedded-driver</artifactId>
                     <scope>compile</scope>
+                </dependency>
+                <!--
+                <dependency>
+                    <groupId>org.neo4j</groupId>
+                    <artifactId>neo4j</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                -->
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
                 </dependency>
             </dependencies>
             <build>
@@ -683,7 +673,7 @@
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
                             <additionalProperties>
-                                <spring.profiles.active>integration</spring.profiles.active>
+                                <spring.profiles.active>developmentlocalhost</spring.profiles.active>
                             </additionalProperties>
                         </configuration>
                     </plugin>
@@ -692,7 +682,219 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <systemPropertyVariables>
-                                <spring.profiles.active>integration</spring.profiles.active>
+                                <spring.profiles.active>developmentlocalhost</spring.profiles.active>
+                                <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
+                                <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+    <profile>
+        <id>integrationlocalhost</id>
+        <properties>
+            <spring.profiles.active>integrationlocalhost</spring.profiles.active>
+        </properties>
+        <dependencies>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-ogm-bolt-driver</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-ogm-embedded-driver</artifactId>
+                <scope>compile</scope>
+            </dependency>
+            <!--
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j</artifactId>
+                <scope>compile</scope>
+            </dependency>
+            -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+            </dependency>
+        </dependencies>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <additionalProperties>
+                            <spring.profiles.active>integrationlocalhost</spring.profiles.active>
+                        </additionalProperties>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <spring.profiles.active>integrationlocalhost</spring.profiles.active>
+                            <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
+                            <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+
+    <profile>
+        <id>integrationtravisci</id>
+        <properties>
+            <spring.profiles.active>integrationtravisci</spring.profiles.active>
+        </properties>
+        <dependencies>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-ogm-bolt-driver</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-ogm-embedded-driver</artifactId>
+                <scope>compile</scope>
+            </dependency>
+            <!--
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j</artifactId>
+                <scope>compile</scope>
+            </dependency>
+            -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+            </dependency>
+        </dependencies>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <additionalProperties>
+                            <spring.profiles.active>integrationtravisci</spring.profiles.active>
+                        </additionalProperties>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <spring.profiles.active>integrationtravisci</spring.profiles.active>
+                            <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
+                            <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+
+    <profile>
+        <id>testinglocalhost</id>
+        <properties>
+            <spring.profiles.active>testinglocalhost</spring.profiles.active>
+        </properties>
+        <dependencies>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-ogm-bolt-driver</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-ogm-embedded-driver</artifactId>
+                <scope>compile</scope>
+            </dependency>
+            <!--
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j</artifactId>
+                <scope>compile</scope>
+            </dependency>
+            -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+            </dependency>
+        </dependencies>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <additionalProperties>
+                            <spring.profiles.active>testinglocalhost</spring.profiles.active>
+                        </additionalProperties>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <spring.profiles.active>testinglocalhost</spring.profiles.active>
+                            <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
+                            <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+
+        <profile>
+            <id>productionlocalhost</id>
+            <properties>
+                <spring.profiles.active>productionlocalhost</spring.profiles.active>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.neo4j</groupId>
+                    <artifactId>neo4j-ogm-bolt-driver</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.neo4j</groupId>
+                    <artifactId>neo4j-ogm-embedded-driver</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <!--
+                <dependency>
+                    <groupId>org.neo4j</groupId>
+                    <artifactId>neo4j</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                -->
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <additionalProperties>
+                                <spring.profiles.active>productionlocalhost</spring.profiles.active>
+                            </additionalProperties>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <spring.profiles.active>productionlocalhost</spring.profiles.active>
                                 <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
                                 <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
                             </systemPropertyVariables>

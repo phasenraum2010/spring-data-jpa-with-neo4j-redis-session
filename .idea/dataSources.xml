@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="jpa_neo4j_int@localhost" uuid="140848ad-1527-408b-abd0-3252387d20d6">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/jpa_neo4j_int</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="jpa_neo4j_prod_cloud_heroku@localhost" uuid="cfd06716-e449-438b-86ae-52395089e010">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/jpa_neo4j_prod_cloud_heroku</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="jpa_neo4j_ci_travis@localhost" uuid="a8a19b34-55f7-46c5-a3d7-bb7554b2ce91">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/jpa_neo4j_ci_travis</jdbc-url>
+    </data-source>
+  </component>
+</project>
