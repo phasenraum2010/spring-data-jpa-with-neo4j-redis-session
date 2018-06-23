@@ -15,4 +15,6 @@ build
 
 run developmentlocalhost
 
+#run default
+
 exit 0

@@ -1,9 +1,9 @@
 spring:
+  application:
+    name: embedded
   profiles:
     active:
-      - developmentembedded
-    include:
-      - all
+      - embedded
   jpa:
     databasePlatform: org.hibernate.dialect.H2Dialect
     generateDdl: true

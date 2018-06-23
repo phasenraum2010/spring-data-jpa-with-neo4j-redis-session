@@ -1,9 +1,7 @@
 spring:
   profiles:
     active:
-      - developmentlocalhost
-    include:
-      - all
+      - distributed
   jpa:
     databasePlatform: org.hibernate.dialect.PostgreSQL95Dialect
     generateDdl: true

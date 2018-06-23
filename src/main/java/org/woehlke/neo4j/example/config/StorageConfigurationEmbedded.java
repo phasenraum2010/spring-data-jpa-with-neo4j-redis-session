@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import java.io.File;
+import java.util.List;
 
 
 /**
@@ -53,30 +54,42 @@ public class StorageConfigurationEmbedded {
 	private ConfigurationLogger configurationLogger;
 
     @Autowired
+    private AllProperties allProperties;
+
+    @Autowired
 	private StorageProperties storageProperties;
 
     @Bean
     public Driver neo4jDriver() {
         storageProperties.log();
+        allProperties.log();
         LOGGER.debug("   Neo4J Driver Configuration = Embedded : " + this.graphDbFileName + " ");
         LOGGER.debug("-------------------------------------------------------------");
         File db = new File( graphDbFileName );
         GraphDatabaseService graphDb = new GraphDatabaseFactory().newEmbeddedDatabase( db );
-        Driver driver = new EmbeddedDriver(graphDb);
-        return driver;
-    }
-
-    @Required
-    @Bean
-	public SessionFactory sessionFactory(Driver neo4jDriver) {
+        Driver neo4jDriver = new EmbeddedDriver(graphDb);
         if (neo4jDriver == null) {
             LOGGER.error("");
             LOGGER.error("-------------------------------------------------------------");
             LOGGER.error("   driver == null                                            ");
             LOGGER.error("-------------------------------------------------------------");
             LOGGER.error("");
+        } else {
+            org.neo4j.ogm.config.Configuration configuration = neo4jDriver.getConfiguration();
+            if(configuration == null){
+                List<String> logInfos = configurationLogger.configurationLogger(configuration);
+                for (String logInfo:logInfos) {
+                    LOGGER.debug(logInfo);
+                }
+            }
         }
-        return new SessionFactory(neo4jDriver,packages);
+        return neo4jDriver;
+    }
+
+    @Required
+    @Bean
+	public SessionFactory sessionFactory(Driver neo4jDriver) {
+        return new SessionFactory( neo4jDriver, packages );
 	}
 
     @Bean("jpaTransactionManager")

@@ -22,6 +22,8 @@ import org.springframework.lang.Nullable;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import java.util.List;
+
 
 /**
  * @author Mark Angrish, Thomas Woehlke
@@ -45,6 +47,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableConfigurationProperties(StorageProperties.class)
 public class StorageConfigurationDistributed {
+
+    @Autowired
+    private AllProperties allProperties;
 
     @Autowired
     private StorageProperties storageProperties;
@@ -72,6 +77,7 @@ public class StorageConfigurationDistributed {
     @Bean
     public org.neo4j.ogm.config.Configuration configuration() {
         storageProperties.log();
+        allProperties.log();
         LOGGER.debug("-------------------------------------------------------------");
         LOGGER.debug("   spring.data.neo4j.username = " + this.username + "        ");
         LOGGER.debug("   spring.data.neo4j.password = " + this.password + "        ");
@@ -87,7 +93,10 @@ public class StorageConfigurationDistributed {
                 .generatedIndexesOutputFilename(storageProperties.getGeneratedIndexesOutputFilename())
                 .verifyConnection(this.verifyConnection)
                 .build();
-        configurationLogger.configurationLogger(configuration);
+        List<String> logInfos = configurationLogger.configurationLogger(configuration);
+        for(String logInfo:logInfos){
+            LOGGER.debug(logInfo);
+        }
         return configuration;
     }
 

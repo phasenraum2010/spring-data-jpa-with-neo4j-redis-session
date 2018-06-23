@@ -1,13 +1,13 @@
 package org.woehlke.neo4j.example.config;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
+import org.woehlke.neo4j.example.config.helper.LoggingComponent;
+import org.woehlke.neo4j.example.config.helper.LoggingComponentImpl;
 
 
 /**
@@ -16,8 +16,7 @@ import org.springframework.validation.annotation.Validated;
 @Component
 @Validated
 @ConfigurationProperties
-public class StorageProperties {
-
+public class StorageProperties extends LoggingComponentImpl implements LoggingComponent {
 
     @NonNull
     @Value("${spring.profiles.active}")
@@ -50,7 +49,6 @@ public class StorageProperties {
     @Nullable
     @Value("${spring.datasource.password}")
     private String datasourcePassword;
-
 
 
     public String getNeo4jUri() {
@@ -117,20 +115,22 @@ public class StorageProperties {
         this.generatedIndexesOutputFilename = generatedIndexesOutputFilename;
     }
 
-    public void log() {
-        LOGGER.debug("-------------------------------------------------------------");
-        LOGGER.debug("   Neo4J Driver Configuration                                ");
-        LOGGER.debug("-------------------------------------------------------------");
-        LOGGER.debug("   spring.profiles.active = " + this.springProfilesActive + "");
-        LOGGER.debug("-------------------------------------------------------------");
-        LOGGER.debug("   spring.data.neo4j.URI = " + this.neo4jUri + "             ");
-        LOGGER.debug("-------------------------------------------------------------");
-        LOGGER.debug("   spring.datasource.driver-class-name = " + this.datasourceDriverClassName + " ");
-        LOGGER.debug("   spring.datasource.url = " + this.datasourceUrl + "        ");
-        LOGGER.debug("   spring.datasource.url = " + this.datasourceUsername + "   ");
-        LOGGER.debug("   spring.datasource.url = " + this.datasourcePassword + "   ");
-        LOGGER.debug("-------------------------------------------------------------");
+    protected String[] getLogInfos(){
+        String[] logs = {
+                "-------------------------------------------------------------",
+                "   Neo4J Driver Configuration                                ",
+                "-------------------------------------------------------------",
+                "   spring.profiles.active = " + this.springProfilesActive + "",
+                "-------------------------------------------------------------",
+                "   spring.data.neo4j.URI = " + this.neo4jUri + "             ",
+                "-------------------------------------------------------------",
+                "   spring.datasource.driver-class-name = " + this.datasourceDriverClassName + " ",
+                "   spring.datasource.url = " + this.datasourceUrl + "        ",
+                "   spring.datasource.url = " + this.datasourceUsername + "   ",
+                "   spring.datasource.url = " + this.datasourcePassword + "   ",
+                "-------------------------------------------------------------"
+        };
+        return logs;
     }
 
-    private static final Log LOGGER = LogFactory.getLog(StorageConfigurationEmbedded.class);
 }
