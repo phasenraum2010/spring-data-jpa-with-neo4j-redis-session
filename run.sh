@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 
-source run-config.sh
+source bin/run-config.sh
 
 build
 #site integration
-#run integration
-site_run integration
+#run default
+#site_run integration
+
+#bin/setup/setup-maven-wrapper.sh
+
+#bin/run-setup.sh
+
+#run developmentembedded
+
+run developmentlocalhost
 
 exit 0
