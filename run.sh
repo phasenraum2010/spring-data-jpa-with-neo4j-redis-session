@@ -13,8 +13,8 @@ build
 
 #run developmentembedded
 
-run developmentlocalhost
+#run developmentlocalhost
 
-#run default
+run default
 
 exit 0
