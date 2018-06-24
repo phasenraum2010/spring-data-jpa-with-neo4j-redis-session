@@ -9,7 +9,7 @@ export MAVEN_VERSION=3.3.9
 
 export JAR_FILE=target/combineddatabases-1.0.1-SNAPSHOT.jar
 
-export PROFILES="default developmentembedded developmentlocalhost integrationlocalhost integrationtravisci testinglocalhost productionlocalhost"
+export PROFILES="default dev int test prod travis devembedded intembedded testembedded prodembedded travisembedded"
 
 function verify(){
     ./mvnw -e verify
@@ -80,8 +80,8 @@ function site_all_profiles(){
 
 function test_all_profiles(){
     #build_all_profiles
-    #run_all_profiles
-    run_like_heroku_all_profiles
+    run_all_profiles
+    #run_like_heroku_all_profiles
     #site_all_profiles
 }
 

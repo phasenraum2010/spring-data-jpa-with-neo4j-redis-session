@@ -30,11 +30,11 @@ import java.util.List;
  */
 @Configuration
 @Profile({
-    "developmentlocalhost",
-    "integrationlocalhost",
-    "integrationtravisci",
-    "testinglocalhost",
-    "productionlocalhost"
+    "dev",
+    "int",
+    "test",
+    "prod",
+    "travis"
 })
 @EnableNeo4jRepositories(
 	basePackages = "org.woehlke.neo4j.example.storage.neo4j.repository",

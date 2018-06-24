@@ -97,10 +97,10 @@
     <orderEntry type="library" name="Maven: org.neo4j:neo4j-ogm-core:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.7" level="project" />
     <orderEntry type="library" name="Maven: io.github.lukehutch:fast-classpath-scanner:2.7.4" level="project" />
+    <orderEntry type="library" name="Maven: org.neo4j:neo4j-ogm-embedded-driver:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: org.neo4j:neo4j-ogm-bolt-driver:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.neo4j.driver:neo4j-java-driver:1.5.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
-    <orderEntry type="library" name="Maven: org.neo4j:neo4j-ogm-embedded-driver:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.neo4j:neo4j:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.neo4j:neo4j-lucene-index:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-analyzers-common:5.5.0" level="project" />
@@ -131,5 +131,6 @@
     <orderEntry type="library" name="Maven: org.neo4j:neo4j-dbms:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.neo4j:neo4j-import-tool:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.12" level="project" />
+    <orderEntry type="library" name="Maven: com.h2database:h2:1.4.197" level="project" />
   </component>
 </module>

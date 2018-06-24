@@ -32,7 +32,11 @@ import java.util.List;
 @Configuration
 @Profile({
     "default",
-    "developmentembedded"
+    "devembedded",
+    "intembedded",
+    "testembedded",
+    "prodembedded",
+    "travisembedded"
 })
 @EnableNeo4jRepositories(
 	basePackages = "org.woehlke.neo4j.example.storage.neo4j.repository",
