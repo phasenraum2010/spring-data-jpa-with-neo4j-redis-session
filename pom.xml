@@ -4,7 +4,7 @@
 
     <groupId>org.woehlke.neo4j.example</groupId>
     <artifactId>combineddatabases</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Spring Data JPA + Neo4j with Spring Boot</name>
@@ -43,7 +43,7 @@
         <url>https://github.com/phasenraum2010/spring-data-jpa-with-neo4j-redis-session.git</url>
         <connection>scm:git:https://github.com/phasenraum2010/spring-data-jpa-with-neo4j-redis-session.git</connection>
         <developerConnection>scm:git:https://github.com/phasenraum2010/spring-data-jpa-with-neo4j-redis-session.git</developerConnection>
-        <tag>combineddatabases-1.0.1</tag>
+        <tag>master</tag>
     </scm>
 
     <issueManagement>
@@ -619,7 +619,10 @@
         </profile>
 
         <profile>
-            <id>devembedded</id>
+            <id>developmentembedded</id>
+            <properties>
+                <spring.profiles.active>developmentembedded</spring.profiles.active>
+            </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.neo4j</groupId>
@@ -646,7 +649,7 @@
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
                             <profiles>
-                                <profile>devembedded</profile>
+                                <profile>developmentembedded</profile>
                             </profiles>
                         </configuration>
                     </plugin>
@@ -655,7 +658,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <systemPropertyVariables>
-                                <spring.profiles.active>devembedded</spring.profiles.active>
+                                <spring.profiles.active>developmentembedded</spring.profiles.active>
                                 <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
                                 <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
                             </systemPropertyVariables>
@@ -666,196 +669,7 @@
         </profile>
 
         <profile>
-            <id>intembedded</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-embedded-driver</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-bolt-driver</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <profiles>
-                                <profile>intembedded</profile>
-                            </profiles>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <spring.profiles.active>intembedded</spring.profiles.active>
-                                <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
-                                <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>testembedded</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-embedded-driver</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-bolt-driver</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <profiles>
-                                <profile>testembedded</profile>
-                            </profiles>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <spring.profiles.active>testembedded</spring.profiles.active>
-                                <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
-                                <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>prodembedded</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-embedded-driver</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-bolt-driver</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <profiles>
-                                <profile>prodembedded</profile>
-                            </profiles>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <spring.profiles.active>prodembedded</spring.profiles.active>
-                                <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
-                                <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-
-        <profile>
-            <id>travisembedded</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-embedded-driver</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-bolt-driver</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <profiles>
-                                <profile>travisembedded</profile>
-                            </profiles>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <spring.profiles.active>travisembedded</spring.profiles.active>
-                                <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
-                                <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>dev</id>
+            <id>developmentlocalhost</id>
             <dependencies>
                 <dependency>
                     <groupId>org.neo4j</groupId>
@@ -883,7 +697,7 @@
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
                             <profiles>
-                                <profile>dev</profile>
+                                <profile>developmentlocalhost</profile>
                             </profiles>
                         </configuration>
                     </plugin>
@@ -892,7 +706,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <systemPropertyVariables>
-                                <spring.profiles.active>dev</spring.profiles.active>
+                                <spring.profiles.active>developmentlocalhost</spring.profiles.active>
                                 <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
                                 <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
                             </systemPropertyVariables>
@@ -903,7 +717,10 @@
         </profile>
 
     <profile>
-        <id>int</id>
+        <id>integrationlocalhost</id>
+        <properties>
+            <spring.profiles.active>integrationlocalhost</spring.profiles.active>
+        </properties>
         <dependencies>
             <dependency>
                 <groupId>org.neo4j</groupId>
@@ -931,7 +748,7 @@
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
                         <profiles>
-                            <profile>int</profile>
+                            <profile>integrationlocalhost</profile>
                         </profiles>
                     </configuration>
                 </plugin>
@@ -940,7 +757,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <configuration>
                         <systemPropertyVariables>
-                            <spring.profiles.active>int</spring.profiles.active>
+                            <spring.profiles.active>integrationlocalhost</spring.profiles.active>
                             <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
                             <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
                         </systemPropertyVariables>
@@ -951,7 +768,10 @@
     </profile>
 
     <profile>
-        <id>test</id>
+        <id>integrationtravisci</id>
+        <properties>
+            <spring.profiles.active>integrationtravisci</spring.profiles.active>
+        </properties>
         <dependencies>
             <dependency>
                 <groupId>org.neo4j</groupId>
@@ -979,7 +799,7 @@
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
                         <profiles>
-                            <profile>test</profile>
+                            <profile>integrationtravisci</profile>
                         </profiles>
                     </configuration>
                 </plugin>
@@ -988,7 +808,58 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <configuration>
                         <systemPropertyVariables>
-                            <spring.profiles.active>test</spring.profiles.active>
+                            <spring.profiles.active>integrationtravisci</spring.profiles.active>
+                            <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
+                            <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+
+    <profile>
+        <id>testinglocalhost</id>
+        <properties>
+            <spring.profiles.active>testinglocalhost</spring.profiles.active>
+        </properties>
+        <dependencies>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-ogm-bolt-driver</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j-ogm-embedded-driver</artifactId>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.neo4j</groupId>
+                <artifactId>neo4j</artifactId>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+            </dependency>
+        </dependencies>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <profiles>
+                            <profile>testinglocalhost</profile>
+                        </profiles>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <spring.profiles.active>testinglocalhost</spring.profiles.active>
                             <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
                             <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
                         </systemPropertyVariables>
@@ -999,7 +870,10 @@
     </profile>
 
         <profile>
-            <id>prod</id>
+            <id>productionlocalhost</id>
+            <properties>
+                <spring.profiles.active>productionlocalhost</spring.profiles.active>
+            </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.neo4j</groupId>
@@ -1027,7 +901,7 @@
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
                             <profiles>
-                                <profile>prod</profile>
+                                <profile>productionlocalhost</profile>
                             </profiles>
                         </configuration>
                     </plugin>
@@ -1036,7 +910,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <systemPropertyVariables>
-                                <spring.profiles.active>prod</spring.profiles.active>
+                                <spring.profiles.active>productionlocalhost</spring.profiles.active>
                                 <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
                                 <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
                             </systemPropertyVariables>
@@ -1047,53 +921,34 @@
         </profile>
 
         <profile>
-            <id>travis</id>
+            <id>setup</id>
             <dependencies>
                 <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-bolt-driver</artifactId>
+                    <groupId>org.codehaus.groovy</groupId>
+                    <artifactId>groovy-console</artifactId>
                 </dependency>
                 <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j-ogm-embedded-driver</artifactId>
-                    <scope>compile</scope>
+                    <groupId>org.codehaus.groovy</groupId>
+                    <artifactId>groovy-ant</artifactId>
                 </dependency>
                 <dependency>
-                    <groupId>org.neo4j</groupId>
-                    <artifactId>neo4j</artifactId>
-                    <scope>compile</scope>
+                    <groupId>org.codehaus.groovy</groupId>
+                    <artifactId>groovy-sql</artifactId>
                 </dependency>
                 <dependency>
-                    <groupId>org.postgresql</groupId>
-                    <artifactId>postgresql</artifactId>
+                    <groupId>org.codehaus.groovy</groupId>
+                    <artifactId>groovy-cli-commons</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.codehaus.groovy</groupId>
+                    <artifactId>groovy-groovysh</artifactId>
+                    <scope>runtime</scope>
                 </dependency>
             </dependencies>
             <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <profiles>
-                                <profile>travis</profile>
-                            </profiles>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <spring.profiles.active>travis</spring.profiles.active>
-                                <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
-                                <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
+
             </build>
         </profile>
-
     </profiles>
 
     <reporting>
