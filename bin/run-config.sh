@@ -5,7 +5,7 @@ export JAVA_OPTIONS='-Xmx300m -Xss512k -Dfile.encoding=UTF-8'
 export MAVEN_OPTS="-Xmx512m"
 export SERVER_PORT=8080
 
-export MAVEN_VERSION=3.5.3
+export MAVEN_VERSION=3.3.9
 
 export JAR_FILE=target/combineddatabases-1.0.1-SNAPSHOT.jar
 
@@ -18,13 +18,13 @@ function verify(){
 function run() {
     PROFILE=$1
     ./mvnw -e -P$PROFILE verify
-    ./mvnw -e -P$PROFILE -Dspring.profiles.active=$PROFILE clean spring-boot:run
+    ./mvnw -e -P$PROFILE clean spring-boot:run
 }
 
 function run_like_heroku() {
     PROFILE=$1
     ./mvnw -P$PROFILE -e clean install
-    java -Dspring.profiles.active=$PROFILE -Dserver.port=$PORT $JAVA_OPTIONS -jar $JAR_FILE
+    java -Dserver.port=$PORT $JAVA_OPTIONS -jar $JAR_FILE
 }
 
 function build(){
@@ -41,13 +41,13 @@ function build_profile (){
 function site(){
     PROFILE=$1
     verify
-    ./mvnw -e -P$PROFILE -Dspring.profiles.active=$PROFILE -Dserver.port=$PORT clean install dependency:tree site
+    ./mvnw -e -P$PROFILE -Dserver.port=$PORT clean install dependency:tree site
 }
 
 function site_run(){
     PROFILE=$1
     ./mvnw -e -P$PROFILE verify
-    ./mvnw -e -P$PROFILE -Dspring.profiles.active=$PROFILE -Dserver.port=$PORT clean install dependency:tree site site:run
+    ./mvnw -e -P$PROFILE -Dserver.port=$PORT clean install dependency:tree site site:run
 }
 
 function build_all_profiles(){
