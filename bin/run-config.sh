@@ -7,11 +7,6 @@ export SERVER_PORT=8080
 
 export MAVEN_VERSION=3.5.3
 
-application-integrationlocalhost.yml
-application-integrationtravisci.yml
-application-testinglocalhost.yml
-application-productionlocalhost.yml
-
 export PROFILES="default developmentembedded developmentlocalhost integrationlocalhost integrationtravisci testinglocalhost productionlocalhost"
 
 function verify(){
