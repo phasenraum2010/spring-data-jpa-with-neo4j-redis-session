@@ -9,16 +9,7 @@ source bin/run-config.sh
 
 #bin/setup/setup-maven-wrapper.sh
 
-#bin/run-setup.sh
 
-#run developmentembedded
-
-#run developmentlocalhost
-
-#run default
-
-#test_all_profiles
-
-bin/setup/setup-maven-wrapper.sh
+test_all_profiles
 
 exit 0

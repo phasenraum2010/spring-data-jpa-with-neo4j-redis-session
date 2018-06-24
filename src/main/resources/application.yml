@@ -3,4 +3,4 @@ spring:
     active: default
     include:
       - all
-      - developmentembedded
+      - devembedded
