@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active:
+      - testinglocalhost
+    include:
+      - all
+      - distributed
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/jpa_neo4j_test?user=jpa_neo4j&password=jpa_neo4jpwd&schema=public&catalog=information_schema'

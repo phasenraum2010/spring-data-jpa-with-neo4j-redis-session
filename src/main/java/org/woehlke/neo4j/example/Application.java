@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.neo4j.Neo4jDataAutoConfiguration;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
+import org.woehlke.neo4j.example.config.AllProperties;
 import org.woehlke.neo4j.example.process.ProcessService;
 
 
@@ -24,15 +25,20 @@ public class Application implements ApplicationListener<ApplicationReadyEvent> {
 
     private static final Log LOGGER = LogFactory.getLog(Application.class);
 
+    @Autowired
+    private AllProperties allProperties;
+
 	@Autowired
     private ProcessService processService;
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
         LOGGER.info(" ");
-        LOGGER.info(" ================================ ");
-        LOGGER.info(" ===== Application Ready   ====== ");
-        LOGGER.info(" ================================ ");
+        LOGGER.info("================================ ");
+        LOGGER.info("===== Application Ready   ====== ");
+        LOGGER.info("================================ ");
+        LOGGER.info(" ");
+        LOGGER.info(" "+allProperties.getSpringApplicationName());
         LOGGER.info(" ");
         processService.runDatabaseExample();
         SpringApplication.exit(event.getApplicationContext());

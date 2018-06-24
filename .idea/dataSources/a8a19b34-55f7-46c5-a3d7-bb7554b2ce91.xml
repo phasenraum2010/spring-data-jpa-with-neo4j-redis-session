@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="jpa_neo4j_ci_travis@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.2">
+    <root id="1"/>
+    <database id="2" parent="1" name="jpa_neo4j_ci_travis">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <schema id="3" parent="2" name="information_schema"/>
+    <schema id="4" parent="2" name="pg_catalog"/>
+    <schema id="5" parent="2" name="public">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+  </database-model>
+</dataSource>
