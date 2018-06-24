@@ -7,6 +7,8 @@ export SERVER_PORT=8080
 
 export MAVEN_VERSION=3.5.3
 
+export JAR_FILE=target/combineddatabases-1.0.1-SNAPSHOT.jar
+
 export PROFILES="default developmentembedded developmentlocalhost integrationlocalhost integrationtravisci testinglocalhost productionlocalhost"
 
 function verify(){
@@ -21,7 +23,8 @@ function run() {
 
 function run_like_heroku() {
     PROFILE=$1
-    java -P$PROFILE -Dspring.profiles.active=$PROFILE -Dserver.port=$PORT $JAVA_OPTIONS -jar target/combined-databases-1.0.1-SNAPSHOT.jar
+    ./mvnw -P$PROFILE -e clean install
+    java -Dspring.profiles.active=$PROFILE -Dserver.port=$PORT $JAVA_OPTIONS -jar $JAR_FILE
 }
 
 function build(){
@@ -76,10 +79,10 @@ function site_all_profiles(){
 }
 
 function test_all_profiles(){
-    build_all_profiles
-    run_all_profiles
+    #build_all_profiles
+    #run_all_profiles
     run_like_heroku_all_profiles
-    site_all_profiles
+    #site_all_profiles
 }
 
 

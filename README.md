@@ -1,8 +1,6 @@
 # spring-data-jpa-with-neo4j-redis-session
 
-
-
-This example show you how to wire up a Spring Boot application with Spring Data JPA and Spring Data Neo4j running side by side.
+Demo web project for Spring Boot using Spring Data Neo4j working together with Spring Data JPA in a Web App
 
 ## Dependencies
 
