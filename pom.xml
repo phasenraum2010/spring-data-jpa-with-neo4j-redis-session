@@ -4,7 +4,7 @@
 
     <groupId>org.woehlke.neo4j.example</groupId>
     <artifactId>combineddatabases</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Spring Data JPA + Neo4j with Spring Boot</name>
@@ -43,7 +43,7 @@
         <url>https://github.com/phasenraum2010/spring-data-jpa-with-neo4j-redis-session.git</url>
         <connection>scm:git:https://github.com/phasenraum2010/spring-data-jpa-with-neo4j-redis-session.git</connection>
         <developerConnection>scm:git:https://github.com/phasenraum2010/spring-data-jpa-with-neo4j-redis-session.git</developerConnection>
-        <tag>combineddatabases-1.0.1</tag>
+        <tag>master</tag>
     </scm>
 
     <issueManagement>
