@@ -2,7 +2,7 @@
 
 source bin/run-config.sh
 
-build
+#build
 #site integration
 #run default
 #site_run integration
@@ -15,6 +15,8 @@ build
 
 #run developmentlocalhost
 
-run default
+#run default
+
+test_all_profiles
 
 exit 0

@@ -734,13 +734,11 @@
                 <artifactId>neo4j-ogm-embedded-driver</artifactId>
                 <scope>compile</scope>
             </dependency>
-            <!--
             <dependency>
                 <groupId>org.neo4j</groupId>
                 <artifactId>neo4j</artifactId>
                 <scope>compile</scope>
             </dependency>
-            -->
             <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
@@ -787,13 +785,11 @@
                 <artifactId>neo4j-ogm-embedded-driver</artifactId>
                 <scope>compile</scope>
             </dependency>
-            <!--
             <dependency>
                 <groupId>org.neo4j</groupId>
                 <artifactId>neo4j</artifactId>
                 <scope>compile</scope>
             </dependency>
-            -->
             <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
@@ -840,13 +836,11 @@
                 <artifactId>neo4j-ogm-embedded-driver</artifactId>
                 <scope>compile</scope>
             </dependency>
-            <!--
             <dependency>
                 <groupId>org.neo4j</groupId>
                 <artifactId>neo4j</artifactId>
                 <scope>compile</scope>
             </dependency>
-            -->
             <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
@@ -893,13 +887,11 @@
                     <artifactId>neo4j-ogm-embedded-driver</artifactId>
                     <scope>compile</scope>
                 </dependency>
-                <!--
                 <dependency>
                     <groupId>org.neo4j</groupId>
                     <artifactId>neo4j</artifactId>
                     <scope>compile</scope>
                 </dependency>
-                -->
                 <dependency>
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>

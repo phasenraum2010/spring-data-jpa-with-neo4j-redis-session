@@ -19,5 +19,23 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/jpa_neo4j_ci_travis</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="jpa_neo4j_dev@localhost" uuid="5bed01af-8e60-426e-b11a-c616ef7d6028">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/jpa_neo4j_dev</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="jpa_neo4j_test@localhost" uuid="30f79dac-fd9a-4fce-a636-deebf430e282">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/jpa_neo4j_test</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="jpa_neo4j_prod@localhost" uuid="90986d7f-fe6c-48f0-8865-856ffeb02990">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/jpa_neo4j_prod</jdbc-url>
+    </data-source>
   </component>
 </project>
