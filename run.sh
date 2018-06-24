@@ -3,13 +3,12 @@
 source bin/run-config.sh
 
 #build
-#site integration
+#site int
 #run default
-#site_run integration
+#site_run int
 
-#bin/setup/setup-maven-wrapper.sh
+#test_all_profiles
 
-
-test_all_profiles
+run dev
 
 exit 0

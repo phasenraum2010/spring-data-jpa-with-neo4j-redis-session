@@ -5,7 +5,7 @@ export JAVA_OPTIONS='-Xmx300m -Xss512k -Dfile.encoding=UTF-8'
 export MAVEN_OPTS="-Xmx512m"
 export SERVER_PORT=8080
 
-export MAVEN_VERSION=3.3.9
+export MAVEN_VERSION=3.5.3
 
 export JAR_FILE=target/combineddatabases-1.0.1-SNAPSHOT.jar
 

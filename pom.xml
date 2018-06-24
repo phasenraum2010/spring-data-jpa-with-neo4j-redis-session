@@ -61,7 +61,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.version>3.3.9</maven.version>
+        <maven.version>3.5.3</maven.version>
         <java.version>1.8</java.version>
         <groovy-all.version>2.5.0</groovy-all.version>
         <neo4j.version>3.1.1</neo4j.version>
@@ -920,35 +920,6 @@
             </build>
         </profile>
 
-        <profile>
-            <id>setup</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-console</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-ant</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-sql</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-cli-commons</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-groovysh</artifactId>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-            <build>
-
-            </build>
-        </profile>
     </profiles>
 
     <reporting>
