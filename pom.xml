@@ -1094,35 +1094,6 @@
             </build>
         </profile>
 
-        <profile>
-            <id>setup</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-console</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-ant</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-sql</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-cli-commons</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-groovysh</artifactId>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-            <build>
-
-            </build>
-        </profile>
     </profiles>
 
     <reporting>
