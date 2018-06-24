@@ -17,6 +17,8 @@ source bin/run-config.sh
 
 #run default
 
-test_all_profiles
+#test_all_profiles
+
+bin/setup/setup-maven-wrapper.sh
 
 exit 0
